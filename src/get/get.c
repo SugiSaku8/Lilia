@@ -5,6 +5,10 @@
 #include "cpu_info.h"
 #include "memory_info.h"
 #include "hardware_info.h"
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include "CException/CException.h"
 
 void encrypt_and_save(const char *data, const char *filename) {
     FILE *file = fopen(filename, "w");
@@ -12,23 +16,28 @@ void encrypt_and_save(const char *data, const char *filename) {
         perror("fopen");
         return;
     }
-
-    char encrypted[256];
-    for (int i = 0; i < strlen(data); i++) {
-        encrypted[i] = data[i] ^ 0xFF; // XOR暗号化
-    }
-    encrypted[strlen(data)] = '\0';
-
-    fwrite(encrypted, sizeof(char), strlen(encrypted), file);
+    fwrite(data, sizeof(char), strlen(data), file);
     fclose(file);
+    if (chown(filename, 0, 0) != 0) {
+        perror("chown");
+        return;
+    }
+    if (chmod(filename, S_IRUSR | S_IWUSR) != 0) {
+        perror("chmod");
+        return;
+    }
 }
-
+An error occurred during get system information
 int main() {
-    char info[1024] = "";
+    Try{
+    char info = "";
     print_system_info();
     print_cpu_info();
     print_memory_info();
     print_hardware_info();
     encrypt_and_save(info, "info.txt");
-    return 0;
+    }Catch(e){
+        printf("An error occurred during get system information:%d\n",e)
+    }
+    return 200;
 }
