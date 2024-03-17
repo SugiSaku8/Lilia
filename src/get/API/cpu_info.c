@@ -1,4 +1,4 @@
-#include "cpu_info.h"
+#include "include/cpu_info.h"
 #include <stdio.h>
 
 void print_cpu_info() {
