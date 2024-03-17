@@ -1,4 +1,4 @@
-#include "include/memory_info.h"
+#include "./include/memory_info.h"
 #include <stdio.h>
 
 void print_memory_info() {

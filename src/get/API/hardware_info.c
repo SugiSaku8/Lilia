@@ -1,4 +1,4 @@
-#include "include/hardware_info.h"
+#include "./include/hardware_info.h"
 #include <stdio.h>
 
 void print_hardware_info() {

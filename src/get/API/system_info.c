@@ -1,4 +1,4 @@
-#include "include/system_info.h"
+#include "./include/system_info.h"
 #include <stdio.h>
 #include <sys/sysinfo.h>
 #include <sys/utsname.h>

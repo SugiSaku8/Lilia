@@ -1,14 +1,14 @@
 // get.c
 #include <stdio.h>
 #include <string.h>
-#include "system_info.h"
-#include "cpu_info.h"
-#include "memory_info.h"
-#include "hardware_info.h"
+#include "./API/include/system_info.h"
+#include "./API/include/cpu_info.h"
+#include "./API/include/memory_info.h"
+#include "./API/include/hardware_info.h"
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <unistd.h>
-#include "CException/CException.h"
+#include "./API/CException/CException.h"
 
 void encrypt_and_save(const char *data, const char *filename) {
     FILE *file = fopen(filename, "w");
