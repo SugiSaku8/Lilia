@@ -27,7 +27,7 @@ void encrypt_and_save(const char *data, const char *filename) {
         return;
     }
 }
-An error occurred during get system information
+
 int main() {
     Try{
     char info = "";
@@ -35,7 +35,7 @@ int main() {
     print_cpu_info();
     print_memory_info();
     print_hardware_info();
-    encrypt_and_save(info, "info.txt");
+    encrypt_and_save(info, "./info.txt");
     }Catch(e){
         printf("An error occurred during get system information:%d\n",e)
     }
